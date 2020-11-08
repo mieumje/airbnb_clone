@@ -35,7 +35,7 @@ class RoomAdmin(admin.ModelAdmin):
             "More About the Space",
             {
                 "classes": ("collapse",),
-                "fields": ("amenities", "facilities", "HouseRule"),
+                "fields": ("amenities", "facilities", "house_rules"),
             },
         ),
         (
@@ -70,7 +70,7 @@ class RoomAdmin(admin.ModelAdmin):
         "room_type",
         "amenities",
         "facilities",
-        "HouseRule",
+        "house_rules",
         "city",
         "country",
     )
@@ -80,7 +80,7 @@ class RoomAdmin(admin.ModelAdmin):
     filter_horizontal = (
         "amenities",
         "facilities",
-        "HouseRule",
+        "house_rules",
     )
 
     def count_amenities(self, obj):
