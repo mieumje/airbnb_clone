@@ -10,12 +10,12 @@ class Reservation(core_models.TimeStampedModel):
     """ Reservation Model definition """
 
     STATUS_PENDING = "pending"
-    STATUS_CONFIRMED = "confimed"
+    STATUS_CONFIRMED = "confrimed"
     STATUS_CANCELED = "canceled"
 
     STATUS_CHOICE = (
         (STATUS_PENDING, "Pending"),
-        (STATUS_CONFIRMED, "Confimed"),
+        (STATUS_CONFIRMED, "confrimed"),
         (STATUS_CANCELED, "Canceled"),
     )
 
@@ -36,7 +36,7 @@ class Reservation(core_models.TimeStampedModel):
 
     def in_progress(self):
         now = timezone.now().date()
-        return now > self.check_in and now < self.check_out
+        return now >= self.check_in and now <= self.check_out
 
     in_progress.boolean = True
     in_progress.short_description = "입실 중"
