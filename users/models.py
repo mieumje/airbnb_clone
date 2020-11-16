@@ -55,7 +55,7 @@ class User(AbstractUser):
             self.email_secret = secret
             send_mail(
                 "Verify Account",
-                f"이메일 계정 확인, 계정 확인용 인증번호:{secret}",
+                f"이메일 계정 확인, 계정 확인용 인증번호: {secret}",
                 settings.EMAIL_FROM,
                 [self.email],
                 fail_silently=False,
