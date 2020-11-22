@@ -6,32 +6,36 @@
 
 {% block content %}
 
-    <div class="container mx-auto">
+    <div class="container mx-auto pb-10">
         <div class="rounded-lg -mx-30 mx-auto bg-gray-800 h-50vh mt-32 my-24 bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1512678080530-7760d81faba6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80)">
     
         </div>
         {{now}}
         
-        <div class="flex flex-wrap -mx-30">
+        <div class="flex flex-wrap -mx-30 mb-16">
             {% for room in rooms %}
                 {% include 'partials/room_card.html' with room=room %}
             {% endfor %}
         </div>
     
-        <h5>
+        <div class="flex items-center justify-center mx-auto container">
             {% if page_obj.has_previous %}
-                <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+                <a href="?page={{page_obj.previous_page_number}}" class="text-pink-600">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
             {% endif %}
     
-            Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+            <span class="mx-3 font-medium text-xl">{{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
     
             {% if page_obj.has_next  %}
-                <a href="?page={{page_obj.next_page_number}}">Next</a>
+                <a href="?page={{page_obj.next_page_number}}" class="text-pink-600">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             {% endif %}
     
             
             
-        </h5>
+        </div>
     
         
         
