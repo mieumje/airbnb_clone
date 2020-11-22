@@ -10,41 +10,10 @@
 {% block content %}
 
     <div class="container xl:w-1/4 lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center border p-5 border-gray-400">
+        
         {% include 'partials/social_login.html' %}
         
-        <form method="POST" action="{% url "users:signup" %}" class="w-full">
-            {% csrf_token %}
-
-            
-            {% if form.non_field_errors %}
-                
-                {% for error in form.non_field_errors  %}
-                <span class="text-red-500 font-bold text-sm">{{error}}</span>
-                {% endfor %}
-                    
-            {% endif %}
-
-            
-            {% for field in form %}
-                <div class="input" {% if field.errors %}has_error{% endif %}">
-                    {{field}}
-                    
-                    {% if field.errors %}
-                        
-                        {% for error in field.errors %}
-                            <span class="text-red-500 font-bold text-sm">{{error}}</span>
-                        {% endfor %}
-                            
-                    {% endif %}
-                        
-                </div>
-            {% endfor %}
-                
-                
-
-            
-            <button class="btn bg-pink-400 mt-3">Sign up</button>
-        </form>
+        {% include 'mixins/auth/auth_form.html' with form=form cta="Sign up" %}
 
         <div class="mt-3">
             <span class="mr-2">계정이 있나요?</span>
