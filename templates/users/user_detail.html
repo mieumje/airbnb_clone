@@ -9,21 +9,34 @@
 
 {% block content %}
     
-    <div class="container xl:w-1/4 lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center border p-5 border-gray-400">
-        
-        
-        {% include 'mixins/user_avatar.html' with user=user_object%}
+    <div class="h-75vh">
+        <div class="container xl:w-1/4 lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center border p-5 border-gray-400">
             
-        <span class="font-semibold text-xl mt-3">
-            {{hi}}
-            {{user_object.first_name}}
-            {{님}}
-        </span>
-        <span class="text-lg mt-2">{{user.bio}}</span>
-        
-
-        <a href="#" class="btn">프로필 수정</a>
-
+            {% include 'mixins/user_avatar.html' with user=user_object%}
+          
+            {% if user == user_object %}
+                <div class="flex items-center">
+                    <span class="text-2xl mt-2 font-medium">
+                        {{hi}}
+                        {{user_object.first_name}}
+                        {{님}}
+                    </span>
+                </div>
+                
+                <span class="text-lg mt-2 mb-2">{{user.bio}}</span>
+                <a href="#" class="btn mt-3 bg-red-500 py-2 rounded-lg text-white font-medium">프로필 수정</a>    
+            {% else %}
+            <div class="flex items-center">
+                <span class="text-2xl mt-2 font-medium">
+    
+                    {{user_object.first_name}} 's Profile
+    
+                </span>
+            </div>
+    
+            {% endif %}
+                
+        </div>
     </div>
 
 {% endblock content %}
