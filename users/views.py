@@ -193,3 +193,9 @@ class ProfileView(DetailView):
 
     model = models.User
     context_object_name = "user_object"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["hi"] = "안녕하세요, "
+        context["님"] = " 님"
+        return context
