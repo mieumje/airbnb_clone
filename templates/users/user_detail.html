@@ -24,7 +24,7 @@
                 </div>
                 
                 <span class="text-lg mt-2 mb-2">{{user.bio}}</span>
-                <a href="#" class="btn mt-3 bg-red-500 py-2 rounded-lg text-white font-medium">프로필 수정</a>    
+                <a href="{% url 'users:update' %}" class="btn mt-3 bg-red-500 py-2 rounded-lg text-white font-medium">프로필 수정</a>    
             {% else %}
             <div class="flex items-center">
                 <span class="text-2xl mt-2 font-medium">
