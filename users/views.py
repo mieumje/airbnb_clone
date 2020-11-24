@@ -218,3 +218,11 @@ class UpdateProfileView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
+        form.fields["birthdate"].widget.attrs = {"placeholder": "생일"}
+        form.fields["first_name"].widget.attrs = {"placeholder": "이름"}
+        form.fields["last_name"].widget.attrs = {"placeholder": "성"}
+        form.fields["gender"].empty_label = None
+        return form
