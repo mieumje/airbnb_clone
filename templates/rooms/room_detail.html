@@ -36,10 +36,10 @@
                 <span class="mr-5 font-ligth">{{room.bedrooms}} bedroom{{room.beddrooms|pluralize}}</span>
                 <span class="mr-5 font-ligth">{{room.guests}} geust{{room.guests|pluralize}}</span>
             </div>
-            <p class="border-section border-b border-gray-400 pb-6 mt-6">
+            <p class="border-section pb-6 mt-6">
                 {{room.description}}
             </p>
-            <div class="border-section border-b border-gray-400 pb-6 mt-6">
+            <div class="border-section">
                 <h4 class="font-medium text-lg mb-5">생활 편의시설</h4>
                 
                 {% for a in room.amenities.all %}
@@ -47,15 +47,15 @@
                 {% endfor %}
                     
             </div>
-            <div class="border-section border-b border-gray-400 pb-6 mt-6">
-                <h4 class="font-medium text-lg mb-5">시설</h4>
+            <div class="border-section">
+                <h4 class="font-medium text-lg mb-5 pb-6 mt-6">시설</h4>
                 
                 {% for f in room.facilities.all %}
                     <li class="mb-1">{{f}}</li>
                 {% endfor %}
                     
             </div>
-            <div class="border-section border-b border-gray-400 pb-6 mt-6">
+            <div class="border-section pb-6 mt-6">
                 <h4 class="font-medium text-lg mb-5">규칙 사항</h4>
                 
                 {% for h in room.house_rules.all %}
@@ -79,7 +79,7 @@
                 <div class="mt-6">
                     
                     {% for review in room.reviews.all %}
-                        <div class="border-b border-gray-400 pb-6 mt-6">
+                        <div class="border-section">
                             <div class="mb-5 flex">
                                 <div>
                                     {% include 'mixins/user_avatar.html' with user=review.user h_and_w='w-10 h-10' text='1' %}
@@ -103,13 +103,22 @@
                 {% if user.is_authenticated %}
                    
                    {% for calendar in room.get_calendars %}
-                        <div>
-                            {{calendar.get_month}} {{calendar.year}}
-                            
-                            {% for day in calendar.days_n %}
-                                {{day}}
-                            {% endfor %}
-                                
+                        <div class="mb-20">
+                            <span class="text-center font-medium text-lg block mb-6">{{calendar.get_month}} {{calendar.year}}</span>
+                            <div class="cal-grid mb-4">
+                                {% for day in calendar.days_n %}
+                                    <span>{{day}}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="cal-grid mb-4">
+                                {% for day in calendar.get_days %}
+                                    {% if day != 0 %}
+                                        <span class="bg-purple-100 w-full text-center rounded text-black p-1 hover:bg-pink-500 hover:text-white cursor-pointer">{{day}}</span>
+                                    {% else %}
+                                        <span></span>
+                                    {% endif %}                                        
+                                {% endfor %}                                   
+                            </div>    
                         </div>    
                    {% endfor %}
                        
