@@ -20,8 +20,8 @@
 
     <div class="container mx-auto flex justify-around pb-56">
         <div class="w-1/2">
-            <div class='flex justify-between'>
-                <div>
+            <div class='flex justify-between mb-5'>
+                <div class="mb-5">
                     <h4 class="text-3xl font-medium mb-px">{{room.name}}</h4>
                     <span class="text-gray-500 font-light">{{room.city}}</span>
                 </div>
@@ -30,10 +30,44 @@
                     <span class="mt-1 font-medium text-gray-400">{{room.host.first_name}}</span>
                 </a>
             </div>
-            <div class="flex">
-                {{room.room_type}}
-                {{room.get_beds}}
-                {{room.bedrooms}}
+            <div class="border-section flex border-b border-gray-400 pb-6 mt-6">
+                <span class="mr-5 font-ligth">{{room.room_type}}</span>
+                <span class="mr-5 font-ligth">{{room.beds}} bed{{room.beds|pluralize}}</span>
+                <span class="mr-5 font-ligth">{{room.bedrooms}} bedroom{{room.beddrooms|pluralize}}</span>
+                <span class="mr-5 font-ligth">{{room.guests}} geust{{room.guests|pluralize}}</span>
+            </div>
+            <p class="border-section border-b border-gray-400 pb-6 mt-6">
+                {{room.description}}
+            </p>
+            <div class="border-section border-b border-gray-400 pb-6 mt-6">
+                <h4 class="font-medium text-lg mb-5">생활 편의시설</h4>
+                
+                {% for a in room.amenities.all %}
+                    <li class="mb-1">{{a}}</li>
+                {% endfor %}
+                    
+            </div>
+            <div class="border-section border-b border-gray-400 pb-6 mt-6">
+                <h4 class="font-medium text-lg mb-5">시설</h4>
+                
+                {% for f in room.facilities.all %}
+                    <li class="mb-1">{{f}}</li>
+                {% endfor %}
+                    
+            </div>
+            <div class="border-section border-b border-gray-400 pb-6 mt-6">
+                <h4 class="font-medium text-lg mb-5">규칙 사항</h4>
+                
+                {% for h in room.house_rules.all %}
+                    <li class="mb-1">{{h}}</li>
+                {% endfor %}
+                    
+            </div>
+            <div class="border-section border-b border-gray-400 pb-6 mt-6">
+                <h4 class="font-medium text-2xl mb-5">Reviews</h4>
+                <div>
+                    {{room.total_rating}} | {{room.reviews.count}} reviews{{room.reivews.count|pluralize}}
+                </div>
             </div>
         </div>
         <div class="w-1/2">
