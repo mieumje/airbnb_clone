@@ -26,3 +26,6 @@ class ReservationAdmin(admin.ModelAdmin):
 class BookedDayAdmin(admin.ModelAdmin):
 
     pass
+
+
+abcdefg
