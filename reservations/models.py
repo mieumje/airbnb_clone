@@ -4,6 +4,8 @@ from django.utils import timezone
 from core import models as core_models
 
 # Create your models here.
+
+
 class BookedDay(core_models.TimeStampedModel):
     day = models.DateField()
     reservation = models.ForeignKey("Reservation", on_delete=models.CASCADE)
