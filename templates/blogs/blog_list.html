@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 
 {% block page_title %}
-    Home
+    Post
 {% endblock page_title %}
 
 {% block content %}
 
     <div class="container mx-auto pb-10">
-        
-        <div class="rounded-lg -mx-30 mx-auto bg-gray-800 h-50vh mt-10 my-24 bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1576765607924-3f7b8410a787?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1054&q=80)">
+        <div class="rounded-lg -mx-30 mx-auto bg-gray-800 h-50vh mt-10 my-24 bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1035&q=80)">
     
         </div>
-        {{now}}
+
+
         
         <div class="flex flex-wrap -mx-30 mb-16">
-            {% for room in rooms %}
-                {% include 'mixins/room_card.html' with room=room %}
+            {% for blog in blogs %}
+                {% include 'mixins/blog_card.html' with blog=blog %}
             {% endfor %}
         </div>
     

@@ -1,0 +1,18 @@
+<div class="w-1/3 mb-10 px-2 overflow-hidden">
+    <a href="{% url 'blogs:detail' blog.pk %}">
+        <div class="w-full h-64 mb-4 bg-cover bg-center rounded-md" style="background-image: url({{blog.first_photo}})"></div>
+        <div class="flex justify-between mb-2 truncate">
+            
+            <div class="w-4/5 overflow-hidden flex">
+                <span class="mr-px uppercase font-medium text-xs border border-pink-400 text-pink-400 rounded py-px px-1">{{blog.host.first_name}}</span>
+                <span class="text-sm ml-3 text-gray-500">건강 정보</span>
+            </div>
+            <span class="text-sm flex items-center">
+                <i class="fas fa-heart text-pink-400 text-ss mr-px"></i>
+            </span>
+        </div>
+        <span class="text-black w-11/12 block truncate">
+            {{blog.name}}
+        </span>
+    </a>
+</div>

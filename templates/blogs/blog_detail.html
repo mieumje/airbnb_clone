@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    {{blog.name}} 상세정보
+{% endblock page_title %}
+
+{% block content %}
+    
+
+    <div class="-mt-5 container max-w-full h-75vh flex mb-20">
+        <div class="h-full w-1/2 bg-cover bg-center" style="background-image:url({{blog.first_photo}})"></div>
+        <div class="h-full w-1/2 flex flex-wrap">
+            
+            {% for photo in blog.get_next_photos %}
+                <div style="background-image:url({{photo.file.url}})" class="w-1/2 h-auto bg-cover bg-center border border-gray"></div>
+            {% endfor %}
+                
+        </div>
+    </div>
+
+    <div class="container mx-auto flex justify-around pb-56">
+        <div class="w-2/3">
+            <div class='flex justify-between mb-5'>
+                <div class="mb-5">
+                    <h4 class="text-3xl font-medium mb-5">{{blog.name}}</h4>
+                    <span class="text-gray-500 font-light">건강 정보</span>
+                </div>
+                <a href="{{blog.host.get_absolute_url}}" class="flex flex-col items-center">
+                    {% include 'mixins/user_avatar.html' with user=blog.host %}
+                    <span class="mt-1 font-medium text-gray-400">{{blog.host.first_name}}</span>
+                </a>
+            </div>
+            <div class="border-section flex border-b border-gray-400 pb-6 mt-6">
+                <span class="mr-5 font-semibold">건강해지기 위해 이런건 어떠세요?</span>
+            </div>
+            <p class="border-section pb-6 mt-6">
+                {{blog.description}}
+            </p>
+            
+            </div>
+            <div class="mt-6">
+                <h4 class="font-medium text-2xl mb-5">Category</h4>
+                <div class="flex items-center">
+                    <div class=>
+                        <i class="fas fa-check-square text-pink-400 text-ss mr-px"></i>
+                        <span class="font-medium text-xl">{{blog.category}}</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
