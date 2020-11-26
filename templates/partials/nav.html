@@ -1,10 +1,10 @@
 <ul class="flex items-center text-sm font-medium h-full">    
     {% if user.is_authenticated %}
-        <li class="nav_link "><a class="font-semibold" href="{% url "blogs:posts" %}">Posts</a></li>
+        <li class="nav_link "><a class="font-semibold" href="{% url "psts:list"%}">질병 정보</a></li>
+        <li class="nav_link "><a class="font-semibold" href="{% url "blogs:posts" %}">건강 관리</a></li>
         <li class="nav_link "><a class="font-semibold" href="{{user.get_absolute_url}}">Profile</a></li>
         <li class="nav_link "><a class="font-semibold" href="{% url "users:logout" %}">Log out</a></li>
     {% else %}
-        <li class="nav_link "><a class="font-semibold" href="#">Posts</a></li>    
         <li class="nav_link "><a class="font-semibold" href="{% url "users:login" %}">Log in</a></li>
         <li class="nav_link "><a class="font-semibold" href="{% url "users:signup" %}">Sign up</a></li>
     {% endif %}

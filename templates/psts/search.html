@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Post Search
+{% endblock page_title %}
+
+{% block search-bar %}
+{% endblock search-bar %}
+
+{% block content %}
+    <h2 class="m-5 font-bold">Pst Search</h2>
+    
+    <form class="mx-5 font-semibold p-0" method="get" action="{% url "psts:search" %}">
+        {{form}}
+        <button class="my-10 bg-transparent hover:bg-pink-400 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-pink-400 hover:border-transparent rounded">검색하기</button>
+    </form>
+
+    <h3 class="m-5 font-semibold">검색 결과</h3>
+
+    {% for pst in psts %}
+    <a href="{% url "psts:detail" pst.pk %}">
+        <h3 class="mx-5 my-2">{{pst.pst_name}} {{pst.pst_type}}</h3>
+    </a>
+    {% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,107 @@
+{% extends "base.html" %} 
+
+{% block page_title %}
+    Post
+{% endblock page_title %}
+
+{% block content %}     
+
+    {{now}}
+  <div class="flex items-center justify-center w-full -mx-30 mx-auto">
+    <form method="GET" action="{% url "psts:search" %}"  class="w-1/2 mt-5">
+      <input class="border text-sm  font-semibold placeholder-gray-500 rounded-lg  hover:shadow-md focus:outline-none" name="pst_name" placeholder="Search by Keyword"/>
+    </form>
+  </div>
+    
+
+    <!-- This is an example component -->d
+<div id="menu" class="container mx-auto px-4 lg:pt-24 lg:pb-64">
+    <div class="flex flex-wrap text-center justify-center">
+      <div class="w-full lg:w-6/12 px-4">
+        <h2 class="text-4xl font-semibold text-black">글 목록</h2>
+        <p class="text-lg leading-relaxed mt-4 mb-4 text-gray-500 border-b pb-5">
+          궁금하신 질병 정보를 확인해보세요!
+        </p>
+      </div>
+    </div>
+    
+    
+    <div class="flex flex-wrap mt-12 justify-center">
+    <div class="grid grid-cols-1 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6 gap-4">
+        
+    
+    {% for pst in psts %}
+        
+      <div class="col-span-2 sm:col-span-1 xl:col-span-1">
+        
+        {% if pst.pst_type.name == '치료법' %}
+        <img
+        alt="..."
+        src="https://cdn0.iconfinder.com/data/icons/coronavirus-sketchy/60/016_-_Injection-vaccine-vaccination-needle-cure-coronavirus-256.png"
+        class="h-24 w-24 rounded  mx-auto"
+      />
+        {% endif %}
+        {% if pst.pst_type.name == '예방법' %}
+        <img
+        alt="..."
+        src="https://cdn3.iconfinder.com/data/icons/covid-19-coronavirus-protection-or-prevention-fill/64/Virus_2Covid-19-256.png"
+        class="h-24 w-24 rounded  mx-auto"
+      />
+        {% endif %}
+        {% if pst.pst_type.name == '식이요법' %}
+        <img
+        alt="..."
+        src="https://cdn2.iconfinder.com/data/icons/international-food/64/bibimbub-256.png"
+        class="h-24 w-24 rounded  mx-auto"
+      />
+        {% endif %}
+        {% if pst.pst_type.name == '운동법' %}
+        <img
+        alt="..."
+        src="https://cdn2.iconfinder.com/data/icons/city-basic-people/240/basicwoman09-256.png"
+        class="h-24 w-24 rounded  mx-auto"
+      />
+        {% endif %}
+            
+        
+      </div>
+      <div class="col-span-2 sm:col-span-4 xl:col-span-4 ml-3">
+        <a href="{% url "psts:detail" pst.pk %}">
+          <h3 class="font-semibold text-black">
+            [ {{pst.pst_name}} ] {{pst.pst_type}}  
+          </h3>
+        
+        <p>
+            {{pst.pst_writer}} 의사선생님
+        </p>
+       
+      </div>
+      <div class="col-span-2 sm:col-span-1 xl:col-span-1 italic ">
+        <i class="fas fa-heart text-pink-400 text-ss pl-20"></i>
+      </div>
+    </a>
+      
+    {% endfor %}
+       
+    </div>
+    </div>
+  </div>
+
+
+  <div class="flex items-center justify-center mx-auto mt-10">
+    {% if page_obj.has_previous %}
+      <a href="?page={{page_obj.previous_page_number}}">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+    {% endif %}
+      <span>{{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+    {% if page_obj.has_next %}
+      <a href="?page={{page_obj.next_page_number}}">
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    {% endif %}
+      
+    </div>
+  
+
+{% endblock content %}
