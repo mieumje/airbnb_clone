@@ -11,7 +11,7 @@ class PstView(ListView):
 
     model = models.Pst
     paginate_by = 10
-    paginate_orphans = 5
+    paginate_orphans = 2
     ordering = "created"
     context_object_name = "psts"
 

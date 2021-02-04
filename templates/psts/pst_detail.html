@@ -23,7 +23,10 @@
       <span class="px-2 hover:bg-gray-300 cursor-pointer rounded"><i class="fas fa-ellipsis-h pt-2 text-lg"></i></span>
     </div>
     {% if pst.first_photo %}
-    <div class="w-full mt-5 h-96 mb-4 bg-cover bg-center rounded-md" style="background-image: url({{pst.first_photo}});"></div>
+    <div class="w-full flex justify-center items-center">
+      <div class="w-2/3 mt-5 h-50vh mb-4 bg-cover bg-center rounded-md" style="background-image: url({{pst.first_photo}});"></div>
+    </div>
+    
     {% endif %}
     
     <div class="w-full h-28 flex mb-5">

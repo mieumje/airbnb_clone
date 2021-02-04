@@ -3,6 +3,11 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+
+      backgroudImage: theme => ({
+        'CIBI' : "url('/uploads/CIBI.jpg')"
+      }),
+
       spacing:{
         "25vh" : "25vh",
         "50vh" : "50vh",
